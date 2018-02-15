@@ -1,7 +1,7 @@
 # alpine-builder
 Docker image with alpine linux to build apk's
 
-Created user `builder` with password `123` because `abuild -r` cannot be executed with root account. 
+Created user `builder` with with no password because `abuild -r` cannot be executed with root account.
 
 
 ### Usage:
@@ -12,7 +12,7 @@ Nexus server named `APK_REPO_CRED`.
 
 _.gitlab-ci.yml_
 ```yaml
-image: jar3b/alpine-builder:3.6
+image: jar3b/alpine-builder:3.7
 stages:
   - release
 
@@ -31,4 +31,5 @@ release:
 
 ### Available versions:
 - 3.5
-- 3.6 (latest)
+- 3.6
+- 3.7 (latest)
