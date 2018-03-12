@@ -14,4 +14,5 @@ RUN adduser -D builder \
     && chmod g+w /var/cache/distfiles \
     && su -c "abuild-keygen -a -i -n" builder \
     && mkdir /projects
+USER builder
 WORKDIR /projects

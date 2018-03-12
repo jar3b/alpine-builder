@@ -22,8 +22,8 @@ release:
     RV: "1.0.1-r1"
     REPO: "https://nexus.example.org/repository/apk/myrepo"
   script:
-    - su -c "abuild checksum" builder
-    - su -c "abuild -r" builder
+    - abuild checksum
+    - abuild -r
     - cd /home/builder/packages/${CI_PROJECT_NAMESPACE}/x86_64
     - curl -v -u ${APK_REPO_CRED} --upload-file myrepo-$RV.apk $REPO/myrepo-$RV.apk
     - curl -v -u ${APK_REPO_CRED} --upload-file myrepo-lib-$RV.apk $REPO/myrepo-lib-$RV.apk
