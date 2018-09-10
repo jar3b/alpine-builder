@@ -1,7 +1,7 @@
 #
 # Dockerfile for alpine-builder
 #
-FROM alpine:3.7
+FROM alpine:3.8
 LABEL maintainer "jar3b <hellotan@live.ru>"
 RUN apk add --no-cache alpine-sdk libressl-dev mariadb-dev postgresql-dev gdbm-dev readline-dev bash libtool autoconf \
     automake perl-dev python2-dev openldap-dev krb5-dev unixodbc-dev linux-pam-dev sqlite-dev talloc-dev libpcap-dev \
