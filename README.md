@@ -16,7 +16,7 @@ Nexus server named `APK_REPO_CRED`.
 `.gitlab-ci.yml`
 
 ```yaml
-image: jar3b/alpine-builder:3.7
+image: jar3b/alpine-builder:3.8
 stages:
   - release
 
@@ -38,18 +38,20 @@ release:
 Another option for gitlab-ci is using build artifacts like so:
 
 ```yaml
-image: jar3b/alpine-builder:3.7
 stages:
-  - release
+  - build
 
-release:
-  stage: release
+build:
+  image: jar3b/alpine-builder:3.8
+  stage: build
   variables:
     RV: "1.0.1-r1"
   script:
     - abuild checksum
     - abuild -r
-    - cd /home/builder/packages/${CI_PROJECT_NAMESPACE}/x86_64
+  artifacts:
+    paths:
+    - /home/builder/packages/$CI_PROJECT_NAME/x86_64/
 ``` 
 
 ## Available versions:
