@@ -16,7 +16,7 @@ Nexus server named `APK_REPO_CRED`.
 `.gitlab-ci.yml`
 
 ```yaml
-image: jar3b/alpine-builder:3.8
+image: jar3b/alpine-builder:3.9
 stages:
   - release
 
@@ -42,20 +42,22 @@ stages:
   - build
 
 build:
-  image: jar3b/alpine-builder:3.8
+  image: jar3b/alpine-builder:3.9
   stage: build
   variables:
     RV: "1.0.1-r1"
   script:
     - abuild checksum
     - abuild -r
+    - mkdir dist/ && cp /home/builder/packages/$CI_PROJECT_NAME/x86_64/ dist/
   artifacts:
     paths:
-    - /home/builder/packages/$CI_PROJECT_NAME/x86_64/
+    - dist/
 ``` 
 
 ## Available versions:
 - 3.5
 - 3.6
 - 3.7
-- 3.8 (latest)
+- 3.8
+- 3.9 (latest)
